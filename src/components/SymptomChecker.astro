@@ -1,0 +1,168 @@
+---
+import styles from './SymptomChecker.module.css';
+
+const symptomCategories = [
+  {
+    id: 'respiratory',
+    name: 'Respiratory',
+    symptoms: [
+      { id: 'sneezing', label: 'Frequent sneezing' },
+      { id: 'coughing', label: 'Coughing or wheezing' },
+      { id: 'runny-nose', label: 'Runny nose or eyes' },
+      { id: 'breathing', label: 'Difficulty breathing' }
+    ]
+  },
+  {
+    id: 'urinary',
+    name: 'Urinary',
+    symptoms: [
+      { id: 'frequent-urination', label: 'Frequent urination' },
+      { id: 'straining', label: 'Straining to urinate' },
+      { id: 'blood-urine', label: 'Blood in urine' },
+      { id: 'outside-box', label: 'Urinating outside litter box' }
+    ]
+  },
+  {
+    id: 'skin',
+    name: 'Skin & Allergies',
+    symptoms: [
+      { id: 'scratching', label: 'Excessive scratching' },
+      { id: 'hair-loss', label: 'Hair loss or bald patches' },
+      { id: 'rashes', label: 'Skin rashes or redness' },
+      { id: 'paw-chewing', label: 'Chewing at paws' }
+    ]
+  },
+  {
+    id: 'digestive',
+    name: 'Digestive',
+    symptoms: [
+      { id: 'vomiting', label: 'Vomiting after litter contact' },
+      { id: 'diarrhea', label: 'Diarrhea' },
+      { id: 'eating-litter', label: 'Eating litter (pica)' },
+      { id: 'appetite-loss', label: 'Loss of appetite' }
+    ]
+  }
+];
+---
+
+<div class={styles.checker} id="symptom-checker">
+  <div class={styles.header}>
+    <h3 class={styles.title}>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class={styles.icon} aria-hidden="true">
+        <path d="M9 11l3 3L22 4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Symptom Checker
+    </h3>
+    <p class={styles.subtitle}>Select symptoms your cat is experiencing to find relevant health information</p>
+  </div>
+
+  <form class={styles.form} id="symptom-form">
+    <div class={styles.categories}>
+      {symptomCategories.map(category => (
+        <fieldset class={styles.category}>
+          <legend class={styles.categoryName}>{category.name}</legend>
+          <div class={styles.symptoms}>
+            {category.symptoms.map(symptom => (
+              <label class={styles.symptomLabel}>
+                <input
+                  type="checkbox"
+                  name="symptoms"
+                  value={symptom.id}
+                  data-category={category.id}
+                  class={styles.checkbox}
+                />
+                <span class={styles.checkmark}></span>
+                <span class={styles.symptomText}>{symptom.label}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+      ))}
+    </div>
+
+    <div class={styles.actions}>
+      <button type="submit" class={styles.submitBtn}>
+        Find Related Conditions
+        <svg viewBox="0 0 20 20" fill="currentColor" class={styles.btnIcon} aria-hidden="true">
+          <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+        </svg>
+      </button>
+      <button type="reset" class={styles.resetBtn}>Clear All</button>
+    </div>
+  </form>
+
+  <div class={styles.results} id="symptom-results" hidden>
+    <h4 class={styles.resultsTitle}>Related Conditions</h4>
+    <div class={styles.resultsList} id="results-list"></div>
+    <p class={styles.disclaimer}>
+      <strong>Note:</strong> This tool provides general information only. Always consult a veterinarian for proper diagnosis and treatment.
+    </p>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('symptom-form') as HTMLFormElement;
+  const results = document.getElementById('symptom-results');
+  const resultsList = document.getElementById('results-list');
+
+  const conditionMap: Record<string, { name: string; url: string; symptoms: string[] }> = {
+    respiratory: {
+      name: 'Respiratory Issues',
+      url: '/conditions/respiratory-issues',
+      symptoms: ['sneezing', 'coughing', 'runny-nose', 'breathing']
+    },
+    urinary: {
+      name: 'Urinary Health Concerns',
+      url: '/conditions/urinary-health',
+      symptoms: ['frequent-urination', 'straining', 'blood-urine', 'outside-box']
+    },
+    allergies: {
+      name: 'Allergies & Sensitivities',
+      url: '/conditions/allergies',
+      symptoms: ['scratching', 'hair-loss', 'rashes', 'paw-chewing', 'sneezing', 'runny-nose']
+    },
+    digestive: {
+      name: 'Digestive Concerns',
+      url: '/conditions/digestive-concerns',
+      symptoms: ['vomiting', 'diarrhea', 'eating-litter', 'appetite-loss']
+    }
+  };
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const selectedSymptoms = formData.getAll('symptoms') as string[];
+
+    if (selectedSymptoms.length === 0) {
+      alert('Please select at least one symptom');
+      return;
+    }
+
+    const matchedConditions: { name: string; url: string; matchCount: number }[] = [];
+
+    for (const [key, condition] of Object.entries(conditionMap)) {
+      const matchCount = selectedSymptoms.filter(s => condition.symptoms.includes(s)).length;
+      if (matchCount > 0) {
+        matchedConditions.push({ ...condition, matchCount });
+      }
+    }
+
+    matchedConditions.sort((a, b) => b.matchCount - a.matchCount);
+
+    if (resultsList) {
+      resultsList.innerHTML = matchedConditions.map(c => `
+        <a href="${c.url}" class="result-item">
+          <span class="result-name">${c.name}</span>
+          <span class="result-match">${c.matchCount} symptom${c.matchCount > 1 ? 's' : ''} match</span>
+        </a>
+      `).join('');
+    }
+
+    results?.removeAttribute('hidden');
+  });
+
+  form?.addEventListener('reset', () => {
+    results?.setAttribute('hidden', '');
+  });
+</script>

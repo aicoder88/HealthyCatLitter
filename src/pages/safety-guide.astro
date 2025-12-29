@@ -1,0 +1,435 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SafetyRating from '../components/SafetyRating.astro';
+import DisclaimerBox from '../components/DisclaimerBox.astro';
+import CitationBlock from '../components/CitationBlock.astro';
+
+const citations = [
+  {
+    id: 1,
+    authors: 'ASPCA.',
+    title: 'Cat Litter Safety Guidelines',
+    journal: 'ASPCA Animal Poison Control Center',
+    year: 2023,
+    url: 'https://www.aspca.org'
+  },
+  {
+    id: 2,
+    authors: 'Cornell Feline Health Center.',
+    title: 'Feline Lower Urinary Tract Disease',
+    journal: 'Cornell University College of Veterinary Medicine',
+    year: 2022,
+    url: 'https://www.vet.cornell.edu'
+  }
+];
+---
+
+<BaseLayout
+  title="Cat Litter Safety Tips - What We've Learned"
+  description="Tips and information about cat litter from cat owners. We're NOT veterinarians - this is what we've gathered from research. Always consult your vet."
+>
+  <article class="article">
+    <header class="article-header">
+      <div class="container-content">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span>/</span>
+          <span>Safety Guide</span>
+        </nav>
+        <h1>Cat Litter Safety Tips</h1>
+        <p class="lead">
+          What we've learned about cat litter as cat owners. <strong>We're not veterinarians—this is information we've gathered, not professional advice.</strong> Always consult your vet for health concerns.
+        </p>
+      </div>
+    </header>
+
+    <div class="container-content">
+      <nav class="toc">
+        <h2>Table of Contents</h2>
+        <ol>
+          <li><a href="#understanding-labels">Understanding Litter Labels</a></li>
+          <li><a href="#ingredients-to-avoid">Ingredients to Avoid</a></li>
+          <li><a href="#safer-alternatives">Safer Alternatives</a></li>
+          <li><a href="#special-considerations">Special Considerations</a></li>
+          <li><a href="#transition-guide">How to Transition Litters</a></li>
+          <li><a href="#maintenance">Litter Box Maintenance</a></li>
+        </ol>
+      </nav>
+
+      <section class="section" id="understanding-labels">
+        <h2>Understanding Litter Labels</h2>
+        <p>
+          Cat litter marketing can be confusing. Here's how to read beyond the marketing claims and understand what you're actually buying.
+        </p>
+
+        <h3>Claims That Require Scrutiny</h3>
+        <div class="claim-grid">
+          <div class="claim-item">
+            <h4>"Natural"</h4>
+            <p>This term is unregulated. A "natural" litter may still contain additives or processing chemicals. Look at the actual ingredient list.</p>
+          </div>
+          <div class="claim-item">
+            <h4>"Low Dust"</h4>
+            <p>Relative to what? Some "low dust" clay litters still produce significant particles. Paper and wood pellets are typically the lowest dust options.</p>
+          </div>
+          <div class="claim-item">
+            <h4>"Unscented"</h4>
+            <p>May still contain odor-control chemicals that aren't technically "fragrances." Check for added ingredients beyond the base material.</p>
+          </div>
+          <div class="claim-item">
+            <h4>"Veterinarian Recommended"</h4>
+            <p>This is often a marketing claim without specific backing. Look for brands that cite actual veterinary research or partnerships.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="ingredients-to-avoid">
+        <h2>Ingredients to Avoid</h2>
+
+        <div class="avoid-list">
+          <div class="avoid-item">
+            <SafetyRating level="danger" showLabel={false} size="sm" />
+            <div class="avoid-content">
+              <h4>Artificial Fragrances</h4>
+              <p>The #1 cause of respiratory irritation in cats. Even "light" scents contain volatile organic compounds that can trigger asthma and allergies. <a href="/ingredients/artificial-fragrances">Learn more &rarr;</a></p>
+            </div>
+          </div>
+
+          <div class="avoid-item">
+            <SafetyRating level="warning" showLabel={false} size="sm" />
+            <div class="avoid-content">
+              <h4>Sodium Benzoate</h4>
+              <p>A preservative that can cause skin irritation and allergic reactions in sensitive cats. Often found in moisture-control formulas. <a href="/ingredients/sodium-benzoate">Learn more &rarr;</a></p>
+            </div>
+          </div>
+
+          <div class="avoid-item">
+            <SafetyRating level="warning" showLabel={false} size="sm" />
+            <div class="avoid-content">
+              <h4>Crystalline Silica Dust</h4>
+              <p>Different from silica gel litter. Some clay litters contain crystalline silica dust that can damage airways with chronic exposure.</p>
+            </div>
+          </div>
+
+          <div class="avoid-item">
+            <SafetyRating level="caution" showLabel={false} size="sm" />
+            <div class="avoid-content">
+              <h4>Clumping Agents (for Kittens)</h4>
+              <p>Kittens may ingest clumping litter, which can cause intestinal blockages. Use non-clumping litter until kittens are at least 3 months old.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="safer-alternatives">
+        <h2>Safer Alternatives by Category</h2>
+
+        <h3>For Respiratory-Sensitive Cats</h3>
+        <ul>
+          <li><strong>Paper pellets</strong> — Virtually dust-free, soft on paws</li>
+          <li><strong>Wood pellets (kiln-dried)</strong> — Low dust, natural odor control</li>
+          <li><strong>Grass seed litter</strong> — Naturally low-dust composition</li>
+        </ul>
+
+        <h3>For Allergy-Prone Cats</h3>
+        <ul>
+          <li><strong>Unscented silica gel</strong> — Hypoallergenic, no additives</li>
+          <li><strong>Paper-based litter</strong> — Minimal processing, few allergens</li>
+          <li><strong>Coconut-based litter</strong> — Naturally hypoallergenic</li>
+        </ul>
+
+        <h3>For Natural Odor Control</h3>
+        <ul>
+          <li><strong>Activated carbon additives</strong> — <a href="https://purrify.ca?utm_source=healthycatlitter&utm_medium=safety-guide" target="_blank" rel="noopener noreferrer">Purrify</a> uses activated carbon to eliminate odors without fragrances. <a href="https://purrify.ca/learn/activated-carbon-benefits?utm_source=healthycatlitter&utm_medium=safety-guide" target="_blank" rel="noopener noreferrer">Learn about the benefits</a> or read their <a href="https://purrify.ca/blog/activated-carbon-vs-baking-soda-comparison?utm_source=healthycatlitter&utm_medium=safety-guide" target="_blank" rel="noopener noreferrer">comparison with baking soda</a></li>
+          <li><strong>Baking soda</strong> — Natural pH neutralizer (use sparingly)</li>
+          <li><strong>Pine or cedar (kiln-dried only)</strong> — Natural antimicrobial properties</li>
+        </ul>
+      </section>
+
+      <section class="section" id="special-considerations">
+        <h2>Special Considerations</h2>
+
+        <h3>Kittens (Under 3 Months)</h3>
+        <ul>
+          <li>Use non-clumping litter only to prevent intestinal blockages</li>
+          <li>Avoid dusty formulas—kitten airways are particularly sensitive</li>
+          <li>Paper or wood pellets are safest options</li>
+          <li>Watch for pica (litter eating) behavior</li>
+        </ul>
+
+        <h3>Senior Cats</h3>
+        <ul>
+          <li>Choose softer textures for arthritic paws</li>
+          <li>Low-sided boxes for easy entry</li>
+          <li>Unscented formulas—seniors often have increased sensitivities</li>
+          <li>Monitor for urinary issues that may require specific litter types</li>
+        </ul>
+
+        <h3>Cats with Medical Conditions</h3>
+        <ul>
+          <li><strong>Asthma:</strong> Dust-free, fragrance-free only. See our <a href="/conditions/respiratory-issues">respiratory guide</a></li>
+          <li><strong>Urinary issues:</strong> Non-clumping or specific vet-recommended formulas<a href="#cite-2" class="cite-ref">[2]</a></li>
+          <li><strong>Post-surgery:</strong> Paper pellets (no dust, won't stick to incisions)</li>
+          <li><strong>Declawed cats:</strong> Soft, fine-textured litter for sensitive paws</li>
+        </ul>
+      </section>
+
+      <section class="section" id="transition-guide">
+        <h2>How to Safely Transition Litters</h2>
+        <p>
+          Sudden litter changes can stress cats and cause litter box avoidance. Follow this gradual transition guide:
+        </p>
+
+        <div class="transition-steps">
+          <div class="step">
+            <span class="step-number">1</span>
+            <div class="step-content">
+              <h4>Days 1-3: 75% Old / 25% New</h4>
+              <p>Mix a small amount of new litter into the existing litter. Monitor for any changes in behavior.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-number">2</span>
+            <div class="step-content">
+              <h4>Days 4-6: 50% Old / 50% New</h4>
+              <p>Increase the ratio. If your cat is using the box normally, continue to the next phase.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-number">3</span>
+            <div class="step-content">
+              <h4>Days 7-9: 25% Old / 75% New</h4>
+              <p>Most cats have adjusted by now. Watch for any hesitation at the litter box.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-number">4</span>
+            <div class="step-content">
+              <h4>Day 10+: 100% New Litter</h4>
+              <p>Complete the transition. If issues arise, slow down and add back some familiar litter.</p>
+            </div>
+          </div>
+        </div>
+
+        <DisclaimerBox type="general">
+          <p>
+            If your cat shows litter box avoidance at any point, stop the transition and consult your veterinarian. Avoidance can lead to urinary issues if not addressed promptly.
+          </p>
+        </DisclaimerBox>
+      </section>
+
+      <section class="section" id="maintenance">
+        <h2>Litter Box Maintenance for Health</h2>
+        <p>
+          Proper maintenance is just as important as litter choice for your cat's health:
+        </p>
+
+        <ul>
+          <li><strong>Scoop daily</strong> — Minimum once per day, twice for multi-cat homes</li>
+          <li><strong>Complete change weekly</strong> — For clumping litter; more often for non-clumping</li>
+          <li><strong>Clean the box monthly</strong> — Wash with mild soap and water, no harsh chemicals</li>
+          <li><strong>Replace boxes annually</strong> — Scratches harbor bacteria</li>
+          <li><strong>One box per cat + 1</strong> — Standard recommendation for multi-cat homes</li>
+          <li><strong>Good ventilation</strong> — Litter area should have airflow but not be drafty</li>
+          <li><strong>Odor control</strong> — If <a href="https://purrify.ca/blog/house-smells-like-cat-litter-solutions?utm_source=healthycatlitter&utm_medium=safety-guide" target="_blank" rel="noopener noreferrer">your house smells like cat litter</a>, address it without adding harsh chemicals</li>
+        </ul>
+      </section>
+
+      <section class="section cta-section">
+        <h2>Looking for Fragrance-Free Odor Control?</h2>
+        <p>
+          If odor is a concern but you want to avoid fragrances, <a href="https://purrify.ca?utm_source=healthycatlitter&utm_medium=safety-guide" target="_blank" rel="noopener noreferrer"><strong>Purrify</strong></a> offers an activated carbon solution that works with any litter. <a href="https://purrify.ca/reviews?utm_source=healthycatlitter&utm_medium=safety-guide" target="_blank" rel="noopener noreferrer">See what other cat owners say</a> or <a href="https://purrify.ca/products/trial-size?utm_source=healthycatlitter&utm_medium=safety-guide" target="_blank" rel="noopener noreferrer">try a trial size</a> to test it yourself.
+        </p>
+        <a href="https://purrify.ca/learn/how-it-works?utm_source=healthycatlitter&utm_medium=safety-guide" target="_blank" rel="noopener noreferrer" class="cta-button">
+          Learn How Purrify Works &rarr;
+        </a>
+      </section>
+
+      <CitationBlock citations={citations} />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .article-header {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-white) 100%);
+    padding: var(--space-12) var(--space-4);
+  }
+
+  .breadcrumb {
+    display: flex;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-4);
+  }
+
+  .breadcrumb a {
+    color: var(--color-primary);
+  }
+
+  h1 {
+    font-size: var(--text-4xl);
+    margin: 0 0 var(--space-4);
+  }
+
+  .lead {
+    font-size: var(--text-xl);
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .toc {
+    background: var(--color-bg);
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    margin: var(--space-8) 0;
+  }
+
+  .toc h2 {
+    font-size: var(--text-lg);
+    margin: 0 0 var(--space-3);
+  }
+
+  .toc ol {
+    margin: 0;
+    padding-left: var(--space-5);
+  }
+
+  .toc li {
+    margin-bottom: var(--space-1);
+  }
+
+  .section {
+    margin: var(--space-12) 0;
+  }
+
+  .section h2 {
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-2);
+    border-bottom: 2px solid var(--color-accent);
+  }
+
+  .section h3 {
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+    color: var(--color-primary);
+  }
+
+  .claim-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+  }
+
+  .claim-item {
+    background: var(--color-bg);
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    border-left: 3px solid var(--color-caution);
+  }
+
+  .claim-item h4 {
+    font-size: var(--text-base);
+    margin: 0 0 var(--space-2);
+  }
+
+  .claim-item p {
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+    margin: 0;
+  }
+
+  .avoid-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .avoid-item {
+    display: flex;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    background: var(--color-bg);
+    border-radius: var(--radius-lg);
+  }
+
+  .avoid-content h4 {
+    font-size: var(--text-base);
+    margin: 0 0 var(--space-1);
+  }
+
+  .avoid-content p {
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+    margin: 0;
+  }
+
+  .transition-steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin: var(--space-6) 0;
+  }
+
+  .step {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+  }
+
+  .step-number {
+    width: 32px;
+    height: 32px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .step-content h4 {
+    margin: 0 0 var(--space-1);
+    font-size: var(--text-base);
+  }
+
+  .step-content p {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+  }
+
+  .cta-section {
+    background: var(--color-accent);
+    padding: var(--space-8);
+    border-radius: var(--radius-xl);
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: var(--space-3) var(--space-6);
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    margin-top: var(--space-4);
+    transition: background var(--transition-fast);
+  }
+
+  .cta-button:hover {
+    background: var(--color-primary-dark);
+    text-decoration: none;
+  }
+</style>

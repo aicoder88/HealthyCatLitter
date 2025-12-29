@@ -1,0 +1,343 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import IngredientCard from '../../components/IngredientCard.astro';
+import DisclaimerBox from '../../components/DisclaimerBox.astro';
+
+const ingredients = [
+  {
+    name: 'Bentonite Clay',
+    slug: 'bentonite-clay',
+    category: 'Clumping Agent',
+    safetyLevel: 'caution' as const,
+    description: 'The most common clumping agent in cat litter. Forms solid clumps when wet but can produce dust and pose risks if ingested.',
+    commonIn: ['Traditional clumping litter', 'Most commercial brands'],
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=250&fit=crop'
+  },
+  {
+    name: 'Silica Gel',
+    slug: 'silica-gel',
+    category: 'Crystal Litter',
+    safetyLevel: 'safe' as const,
+    description: 'Highly absorbent crystals that control moisture and odor. Generally low-dust and safe, though some cats dislike the texture.',
+    commonIn: ['Crystal litters', 'Premium brands'],
+    image: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=250&fit=crop'
+  },
+  {
+    name: 'Activated Carbon',
+    slug: 'activated-carbon',
+    category: 'Odor Control',
+    safetyLevel: 'safe' as const,
+    description: 'Natural odor absorber that traps odor molecules without releasing chemicals. Safe and highly effective for sensitive cats.',
+    commonIn: ['Purrify', 'Premium odor control products'],
+    image: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=400&h=250&fit=crop'
+  },
+  {
+    name: 'Sodium Benzoate',
+    slug: 'sodium-benzoate',
+    category: 'Preservative',
+    safetyLevel: 'warning' as const,
+    description: 'Chemical preservative sometimes added to prevent bacterial growth. Can cause irritation in sensitive cats.',
+    commonIn: ['Some scented litters', 'Moisture-control formulas'],
+    image: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&h=250&fit=crop'
+  },
+  {
+    name: 'Pine Wood',
+    slug: 'pine-wood',
+    category: 'Natural Base',
+    safetyLevel: 'safe' as const,
+    description: 'Natural, biodegradable material with inherent odor-control properties. Must be kiln-dried to remove harmful phenols.',
+    commonIn: ['Feline Pine', 'Natural wood litters'],
+    image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&h=250&fit=crop'
+  },
+  {
+    name: 'Corn',
+    slug: 'corn',
+    category: 'Natural Base',
+    safetyLevel: 'caution' as const,
+    description: 'Biodegradable and clumping, but can develop mold in humid conditions. Generally safe if kept dry.',
+    commonIn: ["World's Best", 'Eco-friendly brands'],
+    image: 'https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&h=250&fit=crop'
+  },
+  {
+    name: 'Wheat',
+    slug: 'wheat',
+    category: 'Natural Base',
+    safetyLevel: 'caution' as const,
+    description: 'Natural clumping agent with good odor control. Risk of mold if humid; avoid if cat has grain allergies.',
+    commonIn: ['sWheat Scoop', 'Natural brands'],
+    image: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&h=250&fit=crop'
+  },
+  {
+    name: 'Paper',
+    slug: 'paper',
+    category: 'Recycled Material',
+    safetyLevel: 'safe' as const,
+    description: 'Made from recycled paper, extremely low dust and soft on paws. Ideal for post-surgery recovery.',
+    commonIn: ['Yesterday\'s News', 'Post-surgical care'],
+    image: 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=400&h=250&fit=crop'
+  },
+  {
+    name: 'Artificial Fragrances',
+    slug: 'artificial-fragrances',
+    category: 'Additive',
+    safetyLevel: 'danger' as const,
+    description: 'Synthetic scents added to mask odors. Major cause of respiratory issues and allergic reactions in cats.',
+    commonIn: ['Scented litters', 'Most commercial brands'],
+    image: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&h=250&fit=crop'
+  },
+  {
+    name: 'Baking Soda',
+    slug: 'baking-soda',
+    category: 'Odor Control',
+    safetyLevel: 'safe' as const,
+    description: 'Natural odor neutralizer. Safe in moderate amounts, though excessive exposure may cause mild irritation.',
+    commonIn: ['Arm & Hammer', 'Many commercial brands'],
+    image: 'https://images.unsplash.com/photo-1584949091598-c31daaaa4aa9?w=400&h=250&fit=crop'
+  }
+];
+
+const categories = ['All', 'Clumping Agent', 'Natural Base', 'Odor Control', 'Additive', 'Crystal Litter', 'Recycled Material', 'Preservative'];
+---
+
+<BaseLayout
+  title="Ingredient Database"
+  description="Comprehensive database of cat litter ingredients with safety ratings. Learn what's in your cat's litter and make informed choices."
+>
+  <section class="page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>/</span>
+        <span>Ingredient Database</span>
+      </nav>
+      <h1>Cat Litter Ingredient Database</h1>
+      <p class="lead">
+        Understanding what's in your cat's litter is the first step to making healthier choices. Browse our database of common ingredients with safety ratings and detailed information.
+      </p>
+    </div>
+  </section>
+
+  <section class="filter-section">
+    <div class="container">
+      <div class="filters">
+        <label for="category-filter">Filter by category:</label>
+        <select id="category-filter" class="filter-select">
+          {categories.map(cat => (
+            <option value={cat === 'All' ? '' : cat}>{cat}</option>
+          ))}
+        </select>
+
+        <label for="safety-filter">Filter by safety:</label>
+        <select id="safety-filter" class="filter-select">
+          <option value="">All Ratings</option>
+          <option value="safe">Safe</option>
+          <option value="caution">Use Caution</option>
+          <option value="warning">Warning</option>
+          <option value="danger">Avoid</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <section class="ingredients-grid">
+    <div class="container">
+      <div class="grid" id="ingredients-grid">
+        {ingredients.map(ingredient => (
+          <div class="ingredient-wrapper" data-category={ingredient.category} data-safety={ingredient.safetyLevel}>
+            <IngredientCard {...ingredient} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="safety-legend">
+    <div class="container-content">
+      <h2>Understanding Safety Ratings</h2>
+      <div class="legend-grid">
+        <div class="legend-item safe">
+          <span class="legend-badge">Safe</span>
+          <p>Generally considered safe for cats when used as directed. Low risk of adverse reactions.</p>
+        </div>
+        <div class="legend-item caution">
+          <span class="legend-badge">Use Caution</span>
+          <p>May cause issues for some cats. Monitor your cat and consider alternatives if problems arise.</p>
+        </div>
+        <div class="legend-item warning">
+          <span class="legend-badge">Warning</span>
+          <p>Known to cause problems in some cats. Use with care and monitor closely.</p>
+        </div>
+        <div class="legend-item danger">
+          <span class="legend-badge">Avoid</span>
+          <p>Not recommended for cats. Associated with health risks and should be avoided.</p>
+        </div>
+      </div>
+
+      <DisclaimerBox type="general">
+        <p>
+          Safety ratings are based on available research and veterinary guidance. Individual cats may react differently to various ingredients. Always monitor your cat when introducing new litter and consult your veterinarian if you have concerns.
+        </p>
+      </DisclaimerBox>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const categoryFilter = document.getElementById('category-filter') as HTMLSelectElement;
+  const safetyFilter = document.getElementById('safety-filter') as HTMLSelectElement;
+  const ingredientItems = document.querySelectorAll('.ingredient-wrapper');
+
+  function filterIngredients() {
+    const category = categoryFilter?.value || '';
+    const safety = safetyFilter?.value || '';
+
+    ingredientItems.forEach(item => {
+      const itemCategory = item.getAttribute('data-category') || '';
+      const itemSafety = item.getAttribute('data-safety') || '';
+
+      const categoryMatch = !category || itemCategory === category;
+      const safetyMatch = !safety || itemSafety === safety;
+
+      if (categoryMatch && safetyMatch) {
+        (item as HTMLElement).style.display = '';
+      } else {
+        (item as HTMLElement).style.display = 'none';
+      }
+    });
+  }
+
+  categoryFilter?.addEventListener('change', filterIngredients);
+  safetyFilter?.addEventListener('change', filterIngredients);
+</script>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-white) 100%);
+    padding: var(--space-12) var(--space-4);
+    text-align: center;
+  }
+
+  .breadcrumb {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-4);
+  }
+
+  .breadcrumb a {
+    color: var(--color-primary);
+  }
+
+  h1 {
+    font-size: var(--text-4xl);
+    margin: 0 0 var(--space-4);
+  }
+
+  .lead {
+    font-size: var(--text-lg);
+    color: var(--color-text-light);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .filter-section {
+    padding: var(--space-6) var(--space-4);
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border-light);
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .filters label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .filter-select {
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    background: var(--color-white);
+    min-width: 150px;
+  }
+
+  .ingredients-grid {
+    padding: var(--space-12) var(--space-4);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .safety-legend {
+    padding: var(--space-12) var(--space-4);
+    background: var(--color-bg);
+  }
+
+  .safety-legend h2 {
+    text-align: center;
+    margin-bottom: var(--space-8);
+  }
+
+  .legend-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+  }
+
+  .legend-item {
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    background: var(--color-white);
+    border: 1px solid var(--color-border-light);
+  }
+
+  .legend-badge {
+    display: inline-block;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-2);
+  }
+
+  .legend-item.safe .legend-badge {
+    background: #e8f5e9;
+    color: var(--color-safe);
+  }
+
+  .legend-item.caution .legend-badge {
+    background: #fff8e1;
+    color: var(--color-caution);
+  }
+
+  .legend-item.warning .legend-badge {
+    background: #fff3e0;
+    color: var(--color-warning);
+  }
+
+  .legend-item.danger .legend-badge {
+    background: #ffebee;
+    color: var(--color-danger);
+  }
+
+  .legend-item p {
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+    margin: 0;
+    line-height: 1.5;
+  }
+</style>

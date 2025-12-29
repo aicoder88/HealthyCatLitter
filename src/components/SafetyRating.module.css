@@ -1,0 +1,131 @@
+/* SafetyRating - Visual safety indicator */
+.rating {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.indicator {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.bar {
+  height: 6px;
+  width: 80px;
+  background: var(--color-border-light);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width var(--transition-base);
+}
+
+.dots {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-border-light);
+  transition: background var(--transition-fast);
+}
+
+.dot.active {
+  background: currentColor;
+}
+
+.labelContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.label {
+  font-weight: 600;
+  font-size: var(--text-sm);
+  line-height: 1.2;
+}
+
+.description {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: 1.3;
+}
+
+/* Safety Levels */
+.safe {
+  color: var(--color-safe);
+}
+
+.safe .fill {
+  width: 25%;
+  background: var(--color-safe);
+}
+
+.caution {
+  color: var(--color-caution);
+}
+
+.caution .fill {
+  width: 50%;
+  background: var(--color-caution);
+}
+
+.warning {
+  color: var(--color-warning);
+}
+
+.warning .fill {
+  width: 75%;
+  background: var(--color-warning);
+}
+
+.danger {
+  color: var(--color-danger);
+}
+
+.danger .fill {
+  width: 100%;
+  background: var(--color-danger);
+}
+
+/* Sizes */
+.sm .bar {
+  width: 60px;
+  height: 4px;
+}
+
+.sm .dot {
+  width: 6px;
+  height: 6px;
+}
+
+.sm .label {
+  font-size: var(--text-xs);
+}
+
+.sm .description {
+  display: none;
+}
+
+.lg .bar {
+  width: 100px;
+  height: 8px;
+}
+
+.lg .dot {
+  width: 10px;
+  height: 10px;
+}
+
+.lg .label {
+  font-size: var(--text-base);
+}

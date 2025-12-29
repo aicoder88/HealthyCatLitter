@@ -1,0 +1,474 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SafetyRating from '../components/SafetyRating.astro';
+import DisclaimerBox from '../components/DisclaimerBox.astro';
+
+const recommendations = [
+  {
+    name: 'Purrify Activated Carbon',
+    category: 'Odor Control Additive',
+    safetyLevel: 'safe' as const,
+    bestFor: ['General use', 'Odor-sensitive households', 'Multi-cat homes'],
+    description: 'Premium activated carbon technology that works with any litter to naturally eliminate odors. Fragrance-free formula uses adsorption rather than masking.',
+    pros: ['100% fragrance-free', 'Works with any litter', 'Natural odor control', 'Long-lasting'],
+    cons: ['Additional product to add'],
+    link: 'https://purrify.ca?utm_source=healthycatlitter&utm_medium=our-picks',
+    featured: true
+  },
+  {
+    name: "Yesterday's News",
+    category: 'Paper Pellet Litter',
+    safetyLevel: 'safe' as const,
+    bestFor: ['Lower dust preference', 'Kittens', 'Eco-friendly choice'],
+    description: 'Made from recycled paper, this litter is marketed as virtually dust-free. A popular choice among cat owners seeking softer textures.',
+    pros: ['Low dust formula', 'Soft on paws', 'Eco-friendly', 'Popular for kittens'],
+    cons: ['Less odor control', 'Non-clumping'],
+    link: null,
+    featured: false
+  },
+  {
+    name: 'Feline Pine Original',
+    category: 'Pine Pellet Litter',
+    safetyLevel: 'safe' as const,
+    bestFor: ['Natural odor control', 'Eco-conscious owners', 'General use'],
+    description: 'Kiln-dried pine pellets that neutralize odors naturally. The heat treatment is said to remove phenols that may be concerning.',
+    pros: ['Natural odor control', 'Biodegradable', 'Low tracking', 'Low dust'],
+    cons: ['Strong initial pine scent', 'Non-clumping'],
+    link: null,
+    featured: false
+  },
+  {
+    name: 'Dr. Elsey\'s Precious Cat',
+    category: 'Clay Clumping Litter',
+    safetyLevel: 'caution' as const,
+    bestFor: ['Cats who prefer clay', 'Strong clumping needed', 'General use'],
+    description: 'A popular clay option marketed with a hypoallergenic formula. Features low-dust processing compared to some other clay brands.',
+    pros: ['Excellent clumping', 'Low dust formula', 'Unscented option', 'Widely available'],
+    cons: ['Still produces some dust', 'Not biodegradable'],
+    link: null,
+    featured: false
+  },
+  {
+    name: 'ökocat Natural Wood',
+    category: 'Wood Fiber Litter',
+    safetyLevel: 'safe' as const,
+    bestFor: ['Natural material preference', 'Eco-conscious owners', 'Clumping + natural'],
+    description: 'Made from responsibly sourced wood fiber, this litter offers clumping convenience with natural materials.',
+    pros: ['Natural material', 'Good clumping', 'Flushable', 'Low dust'],
+    cons: ['Higher price point', 'May track'],
+    link: null,
+    featured: false
+  },
+  {
+    name: 'PrettyLitter Health Monitoring',
+    category: 'Silica Crystal Litter',
+    safetyLevel: 'safe' as const,
+    bestFor: ['Color-change monitoring', 'Single cat homes', 'Low maintenance'],
+    description: 'Silica gel crystals that change color based on urine pH. Some owners find this helpful for noticing changes worth discussing with their vet.',
+    pros: ['Color indicators', 'Low dust', 'Long-lasting', 'Lightweight'],
+    cons: ['Subscription model', 'Some cats dislike texture'],
+    link: null,
+    featured: false
+  }
+];
+---
+
+<BaseLayout
+  title="Our Picks - Cat Litter Recommendations"
+  description="Our personal picks for cat litters and odor control products. These are opinions based on our research, not professional advice."
+>
+  <section class="page-header">
+    <div class="container-content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>/</span>
+        <span>Our Picks</span>
+      </nav>
+      <h1>Our Picks</h1>
+      <p class="lead">
+        Our personal recommendations for cat litters and odor control products. <strong>These are opinions based on our research—not professional veterinary advice.</strong> What works for one cat may not work for another. Always consult your vet for health-related decisions.
+      </p>
+    </div>
+  </section>
+
+  <section class="criteria-section">
+    <div class="container-content">
+      <h2>What We Look For (Our Opinion)</h2>
+      <div class="criteria-grid">
+        <div class="criteria-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="criteria-icon"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          <h3>Ingredient Simplicity</h3>
+          <p>We prefer products with fewer additives and simpler ingredient lists</p>
+        </div>
+        <div class="criteria-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="criteria-icon"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          <h3>Dust Claims</h3>
+          <p>We look for products marketed as low-dust or dust-free</p>
+        </div>
+        <div class="criteria-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="criteria-icon"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          <h3>Fragrance-Free Options</h3>
+          <p>We prefer unscented or naturally scented products</p>
+        </div>
+        <div class="criteria-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="criteria-icon"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          <h3>Owner Reviews</h3>
+          <p>We consider what other cat owners report about their experiences</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="recommendations-section">
+    <div class="container">
+      <h2>Our Recommendations</h2>
+
+      <div class="recommendations-list">
+        {recommendations.map((rec, index) => (
+          <article class:list={['recommendation-card', { featured: rec.featured }]}>
+            {rec.featured && <span class="featured-badge">Editor's Choice</span>}
+
+            <div class="rec-header">
+              <div class="rec-title-group">
+                <span class="rec-category">{rec.category}</span>
+                <h3 class="rec-name">{rec.name}</h3>
+              </div>
+              <SafetyRating level={rec.safetyLevel} size="sm" />
+            </div>
+
+            <p class="rec-description">{rec.description}</p>
+
+            <div class="rec-best-for">
+              <span class="best-for-label">Best for:</span>
+              <div class="best-for-tags">
+                {rec.bestFor.map(tag => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            </div>
+
+            <div class="rec-pros-cons">
+              <div class="pros">
+                <h4>Pros</h4>
+                <ul>
+                  {rec.pros.map(pro => (
+                    <li><span class="check">✓</span> {pro}</li>
+                  ))}
+                </ul>
+              </div>
+              <div class="cons">
+                <h4>Considerations</h4>
+                <ul>
+                  {rec.cons.map(con => (
+                    <li><span class="x">−</span> {con}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {rec.link && (
+              <a href={rec.link} target="_blank" rel="noopener noreferrer" class="rec-link">
+                Learn More
+                <svg viewBox="0 0 20 20" fill="currentColor" class="link-icon"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>
+              </a>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="tip-section">
+    <div class="container-content">
+      <h2>Transition Tips</h2>
+      <p>
+        Changing litters? Most cats prefer gradual transitions. Mix new litter with old over 7-10 days, increasing the ratio gradually. Watch for any signs of litter box avoidance, which may indicate your cat isn't accepting the change.
+      </p>
+      <p>
+        <a href="/safety-guide#transition-guide">Read our complete transition guide &rarr;</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="disclaimer-section">
+    <div class="container-content">
+      <DisclaimerBox type="affiliate">
+        <p>
+          We may earn a small commission when you purchase through some links on this page. This helps support our site. Our picks are based on our personal opinions and preferences, not commission rates.
+        </p>
+      </DisclaimerBox>
+
+      <DisclaimerBox type="general">
+        <p>
+          <strong>Important:</strong> We are not veterinarians and this is not professional advice. These are simply products we like based on our research. Every cat is different. If your cat has health issues or you're unsure about changing litter, please consult with a qualified veterinarian.
+        </p>
+      </DisclaimerBox>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-white) 100%);
+    padding: var(--space-12) var(--space-4);
+    text-align: center;
+  }
+
+  .breadcrumb {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-4);
+  }
+
+  .breadcrumb a {
+    color: var(--color-primary);
+  }
+
+  h1 {
+    font-size: var(--text-4xl);
+    margin: 0 0 var(--space-4);
+  }
+
+  .lead {
+    font-size: var(--text-lg);
+    color: var(--color-text-light);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* Criteria Section */
+  .criteria-section {
+    padding: var(--space-10) var(--space-4);
+    background: var(--color-white);
+  }
+
+  .criteria-section h2 {
+    text-align: center;
+    margin-bottom: var(--space-8);
+  }
+
+  .criteria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .criteria-item {
+    text-align: center;
+  }
+
+  .criteria-icon {
+    width: 40px;
+    height: 40px;
+    color: var(--color-primary);
+    margin-bottom: var(--space-3);
+  }
+
+  .criteria-item h3 {
+    font-size: var(--text-base);
+    margin: 0 0 var(--space-2);
+  }
+
+  .criteria-item p {
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+    margin: 0;
+  }
+
+  /* Recommendations Section */
+  .recommendations-section {
+    padding: var(--space-12) var(--space-4);
+    background: var(--color-bg);
+  }
+
+  .recommendations-section h2 {
+    text-align: center;
+    margin-bottom: var(--space-8);
+  }
+
+  .recommendations-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .recommendation-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    position: relative;
+  }
+
+  .recommendation-card.featured {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .rec-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-4);
+    gap: var(--space-4);
+  }
+
+  .rec-category {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+  }
+
+  .rec-name {
+    font-size: var(--text-2xl);
+    margin: var(--space-1) 0 0;
+  }
+
+  .rec-description {
+    color: var(--color-text-light);
+    margin-bottom: var(--space-4);
+  }
+
+  .rec-best-for {
+    margin-bottom: var(--space-4);
+  }
+
+  .best-for-label {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: var(--space-2);
+  }
+
+  .best-for-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .tag {
+    font-size: var(--text-xs);
+    background: var(--color-accent);
+    color: var(--color-primary);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+  }
+
+  .rec-pros-cons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    background: var(--color-bg);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-4);
+  }
+
+  .rec-pros-cons h4 {
+    font-size: var(--text-sm);
+    margin: 0 0 var(--space-2);
+  }
+
+  .rec-pros-cons ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .rec-pros-cons li {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-1);
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  .check {
+    color: var(--color-safe);
+    font-weight: 700;
+  }
+
+  .x {
+    color: var(--color-text-muted);
+    font-weight: 700;
+  }
+
+  .rec-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: background var(--transition-fast);
+  }
+
+  .rec-link:hover {
+    background: var(--color-primary-dark);
+    text-decoration: none;
+  }
+
+  .link-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Tip Section */
+  .tip-section {
+    padding: var(--space-10) var(--space-4);
+    background: var(--color-white);
+  }
+
+  .tip-section h2 {
+    margin-bottom: var(--space-4);
+  }
+
+  /* Disclaimer Section */
+  .disclaimer-section {
+    padding: var(--space-8) var(--space-4) var(--space-12);
+    background: var(--color-bg);
+  }
+
+  @media (max-width: 600px) {
+    .rec-header {
+      flex-direction: column;
+    }
+
+    .rec-pros-cons {
+      grid-template-columns: 1fr;
+    }
+
+    .featured-badge {
+      position: static;
+      margin-bottom: var(--space-4);
+    }
+  }
+</style>

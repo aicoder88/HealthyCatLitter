@@ -1,0 +1,54 @@
+---
+import styles from './ConditionCard.module.css';
+
+interface Props {
+  title: string;
+  slug: string;
+  description: string;
+  icon: string;
+  severity?: 'mild' | 'moderate' | 'serious';
+  symptoms?: string[];
+}
+
+const { title, slug, description, icon, severity = 'moderate', symptoms = [] } = Astro.props;
+
+const severityLabels = {
+  mild: 'Usually Mild',
+  moderate: 'Moderate Concern',
+  serious: 'Serious - See Vet'
+};
+---
+
+<article class={styles.card}>
+  <a href={`/conditions/${slug}`} class={styles.link}>
+    <div class={styles.header}>
+      <div class={styles.iconContainer} aria-hidden="true">
+        <Fragment set:html={icon} />
+      </div>
+      <span class:list={[styles.severity, styles[severity]]}>
+        {severityLabels[severity]}
+      </span>
+    </div>
+
+    <h3 class={styles.title}>{title}</h3>
+    <p class={styles.description}>{description}</p>
+
+    {symptoms.length > 0 && (
+      <div class={styles.symptoms}>
+        <span class={styles.symptomsLabel}>Common symptoms:</span>
+        <ul class={styles.symptomList}>
+          {symptoms.slice(0, 3).map(symptom => (
+            <li>{symptom}</li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    <span class={styles.readMore}>
+      Read Full Guide
+      <svg viewBox="0 0 20 20" fill="currentColor" class={styles.arrow} aria-hidden="true">
+        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+      </svg>
+    </span>
+  </a>
+</article>

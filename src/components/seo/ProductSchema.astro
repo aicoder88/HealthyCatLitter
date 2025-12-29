@@ -1,0 +1,52 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  image?: string;
+  brand?: string;
+  category?: string;
+  rating?: number;
+  reviewCount?: number;
+  url?: string;
+}
+
+const {
+  name,
+  description,
+  image = 'https://healthycatlitter.com/og-default.jpg',
+  brand = 'Various',
+  category = 'Cat Litter',
+  rating,
+  reviewCount,
+  url
+} = Astro.props;
+
+const schema: Record<string, any> = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name,
+  description,
+  image,
+  brand: {
+    '@type': 'Brand',
+    name: brand
+  },
+  category
+};
+
+if (rating && reviewCount) {
+  schema.aggregateRating = {
+    '@type': 'AggregateRating',
+    ratingValue: rating,
+    reviewCount: reviewCount,
+    bestRating: 5,
+    worstRating: 1
+  };
+}
+
+if (url) {
+  schema.url = url;
+}
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

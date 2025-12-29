@@ -1,0 +1,337 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SafetyRating from '../../components/SafetyRating.astro';
+import CitationBlock from '../../components/CitationBlock.astro';
+import DisclaimerBox from '../../components/DisclaimerBox.astro';
+
+const citations = [
+  {
+    id: 1,
+    authors: 'Bansal RC, Goyal M.',
+    title: 'Activated Carbon Adsorption',
+    journal: 'CRC Press',
+    year: 2005
+  },
+  {
+    id: 2,
+    authors: 'Marsh H, Rodriguez-Reinoso F.',
+    title: 'Activated Carbon',
+    journal: 'Elsevier Science',
+    year: 2006
+  },
+  {
+    id: 3,
+    authors: 'ASPCA.',
+    title: 'Activated Charcoal Use in Pets',
+    journal: 'ASPCA Animal Poison Control Center',
+    year: 2023,
+    url: 'https://www.aspca.org'
+  }
+];
+---
+
+<BaseLayout
+  title="Activated Carbon - Ingredient Safety Profile"
+  description="Learn about activated carbon in cat litter: safety profile, how it works for odor control, and why it's recommended for sensitive cats."
+  article={true}
+>
+  <article class="article">
+    <header class="article-header">
+      <div class="container-content">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span>/</span>
+          <a href="/ingredients">Ingredients</a>
+          <span>/</span>
+          <span>Activated Carbon</span>
+        </nav>
+
+        <div class="category-badge">Odor Control</div>
+        <h1>Activated Carbon</h1>
+
+        <div class="safety-summary">
+          <SafetyRating level="safe" size="lg" />
+        </div>
+
+        <p class="lead">
+          Activated carbon (also called activated charcoal) is a highly porous form of carbon with exceptional odor-adsorbing properties. It's one of the safest and most effective natural odor control options for cat litter.
+        </p>
+      </div>
+    </header>
+
+    <div class="container-content">
+      <section class="section">
+        <h2>What Is Activated Carbon?</h2>
+        <p>
+          Activated carbon is carbon that has been processed to have incredibly small, low-volume pores that increase its surface area for adsorption. A single gram of activated carbon can have a surface area of over 3,000 square meters<a href="#cite-1" class="cite-ref">[1]</a>—roughly the size of a football field.
+        </p>
+        <p>
+          This massive surface area allows activated carbon to trap and hold odor molecules through a process called <strong>adsorption</strong> (not absorption). The molecules physically bond to the carbon's surface, effectively removing them from the air.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>How It Works for Odor Control</h2>
+        <p>
+          Unlike fragrances that mask odors or chemicals that attempt to neutralize them, activated carbon physically captures odor molecules:
+        </p>
+        <ul>
+          <li><strong>Ammonia</strong> — The primary odor compound in cat urine is trapped in carbon's pores</li>
+          <li><strong>Volatile organic compounds</strong> — Sulfur compounds and other gases are adsorbed</li>
+          <li><strong>Moisture</strong> — Helps control humidity that promotes bacterial growth</li>
+        </ul>
+        <p>
+          The process is purely physical—no chemical reactions occur, and no byproducts are released<a href="#cite-2" class="cite-ref">[2]</a>. This makes activated carbon uniquely safe for cats with respiratory sensitivities.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Safety Profile</h2>
+        <div class="safety-grid">
+          <div class="safety-item safe">
+            <h4>Ingestion</h4>
+            <p>Activated charcoal is actually used by veterinarians to treat poisoning in pets<a href="#cite-3" class="cite-ref">[3]</a>. Small amounts ingested from litter are not harmful.</p>
+          </div>
+          <div class="safety-item safe">
+            <h4>Respiratory</h4>
+            <p>No volatile compounds are released. Safe for cats with asthma or respiratory sensitivities.</p>
+          </div>
+          <div class="safety-item safe">
+            <h4>Skin Contact</h4>
+            <p>Non-irritating. Safe for paw contact. May temporarily stain light-colored fur but washes off easily.</p>
+          </div>
+          <div class="safety-item safe">
+            <h4>Long-term Use</h4>
+            <p>No known cumulative effects. Safe for continuous, long-term use in litter boxes.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section highlight-box">
+        <h2>Our Recommendation: Purrify</h2>
+        <p>
+          For cat owners looking to harness the power of activated carbon for odor control, we recommend <a href="https://purrify.ca?utm_source=healthycatlitter&utm_medium=ingredient-carbon" target="_blank" rel="noopener noreferrer"><strong>Purrify</strong></a>. It's specifically formulated for cat litter odor control using premium activated carbon.
+        </p>
+        <ul>
+          <li><strong>100% fragrance-free</strong> — Safe for cats with respiratory sensitivities</li>
+          <li><strong>Works with any litter</strong> — Simply add to your existing litter</li>
+          <li><strong>Long-lasting</strong> — Carbon continues working until its pores are saturated</li>
+          <li><strong>Veterinary-informed formula</strong> — Designed with cat health as the priority</li>
+        </ul>
+        <p>
+          <a href="https://purrify.ca/learn/how-it-works?utm_source=healthycatlitter&utm_medium=ingredient-carbon" target="_blank" rel="noopener noreferrer">Learn how Purrify works &rarr;</a>
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Activated Carbon vs. Other Odor Control Methods</h2>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Effectiveness</th>
+              <th>Safety</th>
+              <th>Mechanism</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Activated Carbon</strong></td>
+              <td>Excellent</td>
+              <td>Excellent</td>
+              <td>Physical adsorption</td>
+            </tr>
+            <tr>
+              <td>Fragrances</td>
+              <td>Poor (masks only)</td>
+              <td>Poor</td>
+              <td>Covers odors</td>
+            </tr>
+            <tr>
+              <td>Baking Soda</td>
+              <td>Moderate</td>
+              <td>Good</td>
+              <td>pH neutralization</td>
+            </tr>
+            <tr>
+              <td>Enzymatic</td>
+              <td>Good</td>
+              <td>Good</td>
+              <td>Biological breakdown</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Who Should Use Activated Carbon</h2>
+        <p>Activated carbon-based odor control is particularly recommended for:</p>
+        <ul>
+          <li>Cats with <a href="/conditions/respiratory-issues">respiratory issues</a> or asthma</li>
+          <li>Cats with <a href="/conditions/allergies">fragrance sensitivities</a></li>
+          <li>Multi-cat households where odor control is challenging</li>
+          <li>Small apartments where litter boxes are in living spaces</li>
+          <li>Anyone who prefers natural, chemical-free solutions</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Common Questions</h2>
+
+        <h3>Is activated carbon the same as charcoal?</h3>
+        <p>
+          Activated carbon is charcoal that has been processed to increase its porosity. Regular charcoal (like from a BBQ) is not safe for pet use and doesn't have the same adsorption properties.
+        </p>
+
+        <h3>How long does activated carbon last?</h3>
+        <p>
+          Activated carbon continues working until its pores are saturated with odor molecules. With quality products like Purrify, a single application can last 2-4 weeks depending on conditions.
+        </p>
+
+        <h3>Can I make my own activated carbon litter additive?</h3>
+        <p>
+          We don't recommend DIY approaches. Activated carbon for pet use should be specifically processed and sized. Food-grade or aquarium carbon may not be appropriate for litter box use.
+        </p>
+      </section>
+
+      <CitationBlock citations={citations} />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .article-header {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-white) 100%);
+    padding: var(--space-12) var(--space-4);
+  }
+
+  .breadcrumb {
+    display: flex;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-4);
+  }
+
+  .breadcrumb a {
+    color: var(--color-primary);
+  }
+
+  .category-badge {
+    display: inline-block;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-primary);
+    background: var(--color-white);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-primary);
+    margin-bottom: var(--space-4);
+  }
+
+  h1 {
+    font-size: var(--text-4xl);
+    margin: 0 0 var(--space-6);
+  }
+
+  .safety-summary {
+    margin-bottom: var(--space-6);
+  }
+
+  .lead {
+    font-size: var(--text-xl);
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .section {
+    margin: var(--space-10) 0;
+  }
+
+  .section h2 {
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-2);
+    border-bottom: 2px solid var(--color-accent);
+  }
+
+  .section h3 {
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-2);
+    color: var(--color-primary);
+    font-size: var(--text-lg);
+  }
+
+  .safety-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+  }
+
+  .safety-item {
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-light);
+  }
+
+  .safety-item.safe {
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+  }
+
+  .safety-item h4 {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-safe);
+    margin: 0 0 var(--space-2);
+  }
+
+  .safety-item p {
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .highlight-box {
+    background: var(--color-accent);
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--color-primary);
+  }
+
+  .highlight-box h2 {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--space-4);
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: var(--space-3) var(--space-4);
+    text-align: left;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+
+  .comparison-table th {
+    background: var(--color-bg);
+    font-weight: 600;
+    font-size: var(--text-sm);
+  }
+
+  .comparison-table td {
+    font-size: var(--text-sm);
+  }
+
+  .comparison-table tr:first-child td {
+    background: #f0fdf4;
+  }
+</style>

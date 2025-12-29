@@ -1,0 +1,48 @@
+---
+import styles from './SafetyRating.module.css';
+
+interface Props {
+  level: 'safe' | 'caution' | 'warning' | 'danger';
+  label?: string;
+  showLabel?: boolean;
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const { level, label, showLabel = true, size = 'md' } = Astro.props;
+
+const labels = {
+  safe: 'Lower Concern',
+  caution: 'Some Concerns',
+  warning: 'Higher Concern',
+  danger: 'Significant Concerns'
+};
+
+const descriptions = {
+  safe: 'Fewer reported issues in our research',
+  caution: 'Some owners report issues',
+  warning: 'More owners report concerns',
+  danger: 'Commonly reported concerns'
+};
+
+const displayLabel = label || labels[level];
+---
+
+<div class:list={[styles.rating, styles[level], styles[size]]} role="img" aria-label={`Safety rating: ${displayLabel}`}>
+  <div class={styles.indicator}>
+    <div class={styles.bar}>
+      <div class={styles.fill}></div>
+    </div>
+    <div class={styles.dots}>
+      <span class:list={[styles.dot, { [styles.active]: ['safe', 'caution', 'warning', 'danger'].includes(level) }]}></span>
+      <span class:list={[styles.dot, { [styles.active]: ['caution', 'warning', 'danger'].includes(level) }]}></span>
+      <span class:list={[styles.dot, { [styles.active]: ['warning', 'danger'].includes(level) }]}></span>
+      <span class:list={[styles.dot, { [styles.active]: level === 'danger' }]}></span>
+    </div>
+  </div>
+  {showLabel && (
+    <div class={styles.labelContainer}>
+      <span class={styles.label}>{displayLabel}</span>
+      <span class={styles.description}>{descriptions[level]}</span>
+    </div>
+  )}
+</div>

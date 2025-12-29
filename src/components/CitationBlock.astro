@@ -1,0 +1,49 @@
+---
+import styles from './CitationBlock.module.css';
+
+interface Citation {
+  id: number;
+  authors: string;
+  title: string;
+  journal?: string;
+  year: number;
+  url?: string;
+}
+
+interface Props {
+  citations: Citation[];
+}
+
+const { citations } = Astro.props;
+---
+
+<aside class={styles.citations} aria-labelledby="citations-heading">
+  <h3 id="citations-heading" class={styles.heading}>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class={styles.icon} aria-hidden="true">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    References & Citations
+  </h3>
+  <ol class={styles.list}>
+    {citations.map(citation => (
+      <li id={`cite-${citation.id}`} class={styles.item}>
+        <span class={styles.number}>{citation.id}.</span>
+        <div class={styles.content}>
+          <span class={styles.authors}>{citation.authors}</span>
+          {citation.url ? (
+            <a href={citation.url} target="_blank" rel="noopener noreferrer" class={styles.title}>
+              {citation.title}
+            </a>
+          ) : (
+            <span class={styles.title}>{citation.title}</span>
+          )}
+          {citation.journal && (
+            <span class={styles.journal}>{citation.journal}</span>
+          )}
+          <span class={styles.year}>({citation.year})</span>
+        </div>
+      </li>
+    ))}
+  </ol>
+</aside>

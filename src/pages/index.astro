@@ -1,0 +1,207 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ConditionCard from '../components/ConditionCard.astro';
+import SymptomChecker from '../components/SymptomChecker.astro';
+import DisclaimerBox from '../components/DisclaimerBox.astro';
+import styles from './_index.module.css';
+
+const conditions = [
+  {
+    title: 'Respiratory Issues',
+    slug: 'respiratory-issues',
+    description: 'Dust, fragrances, and certain litter materials can trigger respiratory problems in cats, especially those with asthma or allergies.',
+    severity: 'moderate' as const,
+    symptoms: ['Sneezing', 'Wheezing', 'Watery eyes'],
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>'
+  },
+  {
+    title: 'Urinary Health',
+    slug: 'urinary-health',
+    description: 'Some litter types can impact urinary health. Learn which materials are safest for cats prone to UTIs or crystals.',
+    severity: 'serious' as const,
+    symptoms: ['Straining', 'Frequent trips', 'Blood in urine'],
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0L12 2.69z"/></svg>'
+  },
+  {
+    title: 'Allergies & Sensitivities',
+    slug: 'allergies',
+    description: 'Cats can develop allergies to litter ingredients. Identify common allergens and find hypoallergenic alternatives.',
+    severity: 'moderate' as const,
+    symptoms: ['Scratching', 'Hair loss', 'Skin irritation'],
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>'
+  },
+  {
+    title: 'Digestive Concerns',
+    slug: 'digestive-concerns',
+    description: 'Ingesting litter (pica) or exposure to certain chemicals can cause digestive issues. Know the risks and safer options.',
+    severity: 'moderate' as const,
+    symptoms: ['Vomiting', 'Diarrhea', 'Litter eating'],
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 110 20 10 10 0 010-20z"/><path d="M12 6v6l4 2"/></svg>'
+  }
+];
+
+const featuredIngredients = [
+  { name: 'Bentonite Clay', safety: 'caution', href: '/ingredients/bentonite-clay' },
+  { name: 'Silica Gel', safety: 'safe', href: '/ingredients/silica-gel' },
+  { name: 'Activated Carbon', safety: 'safe', href: '/ingredients/activated-carbon' },
+  { name: 'Sodium Benzoate', safety: 'warning', href: '/ingredients/sodium-benzoate' },
+];
+---
+
+<BaseLayout
+  title="Home"
+  description="Cat litter information and opinions from cat owners. Information about ingredients and products - not veterinary advice. Always consult your vet."
+>
+  <!-- Hero Section -->
+  <section class={styles.hero}>
+    <div class={styles.heroContent}>
+      <div class={styles.heroText}>
+        <span class={styles.heroTag}>Cat Litter Information</span>
+        <h1 class={styles.heroTitle}>
+          Learning About Cat Litter Together
+        </h1>
+        <p class={styles.heroDescription}>
+          Information and opinions about cat litter ingredients and products. <strong>We're cat owners, not vets—always consult a professional for health advice.</strong>
+        </p>
+        <div class={styles.heroCTA}>
+          <a href="/conditions" class={styles.primaryBtn}>
+            Browse Health Topics
+            <svg viewBox="0 0 20 20" fill="currentColor" class={styles.btnIcon}><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          </a>
+          <a href="/ingredients" class={styles.secondaryBtn}>
+            Ingredient Guide
+          </a>
+        </div>
+      </div>
+      <div class={styles.heroImage}>
+        <img
+          src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=600&h=500&fit=crop"
+          alt="Healthy cat looking contentedly at camera"
+          width="600"
+          height="500"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Indicators -->
+  <section class={styles.trust}>
+    <div class={styles.trustContainer}>
+      <div class={styles.trustItem}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class={styles.trustIcon}><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <span>Our Research</span>
+      </div>
+      <div class={styles.trustItem}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class={styles.trustIcon}><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        <span>Linked Sources</span>
+      </div>
+      <div class={styles.trustItem}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class={styles.trustIcon}><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        <span>Cat Owner Perspective</span>
+      </div>
+      <div class={styles.trustItem}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class={styles.trustIcon}><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        <span>Not Veterinary Advice</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Symptom Checker -->
+  <section class={styles.checkerSection}>
+    <div class={styles.checkerContainer}>
+      <SymptomChecker />
+    </div>
+  </section>
+
+  <!-- Health Conditions -->
+  <section class={styles.conditions}>
+    <div class={styles.sectionContainer}>
+      <div class={styles.sectionHeader}>
+        <h2 class={styles.sectionTitle}>Health Topics & Litter</h2>
+        <p class={styles.sectionDescription}>
+          Information about what some cat owners consider when choosing litter. <em>This is not medical advice—consult your vet for health concerns.</em>
+        </p>
+      </div>
+      <div class={styles.conditionsGrid}>
+        {conditions.map(condition => (
+          <ConditionCard {...condition} />
+        ))}
+      </div>
+      <div class={styles.sectionFooter}>
+        <a href="/conditions" class={styles.viewAllLink}>
+          View All Conditions &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Recommendation -->
+  <section class={styles.featured}>
+    <div class={styles.featuredContainer}>
+      <div class={styles.featuredContent}>
+        <span class={styles.featuredTag}>Our Recommendation</span>
+        <h2 class={styles.featuredTitle}>Activated Carbon: The Science of Odor Control</h2>
+        <p class={styles.featuredText}>
+          When it comes to odor control that's both effective and safe, activated carbon stands out. Unlike chemical fragrances that can irritate respiratory systems, activated carbon naturally adsorbs odor molecules without releasing harmful compounds.
+        </p>
+        <p class={styles.featuredText}>
+          <a href="https://purrify.ca/learn/how-it-works?utm_source=healthycatlitter&utm_medium=homepage" target="_blank" rel="noopener noreferrer"><strong>Purrify</strong></a> uses premium activated carbon technology to neutralize litter box odors at the molecular level—no fragrances, no chemicals, just clean air for you and your cat.
+        </p>
+        <a href="https://purrify.ca?utm_source=healthycatlitter&utm_medium=homepage" target="_blank" rel="noopener noreferrer" class={styles.featuredBtn}>
+          Learn About Purrify
+          <svg viewBox="0 0 20 20" fill="currentColor" class={styles.btnIcon}><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>
+        </a>
+      </div>
+      <div class={styles.featuredImage}>
+        <img
+          src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=500&h=400&fit=crop"
+          alt="Happy cat in clean environment"
+          width="500"
+          height="400"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Ingredient Reference -->
+  <section class={styles.ingredients}>
+    <div class={styles.sectionContainer}>
+      <div class={styles.sectionHeader}>
+        <h2 class={styles.sectionTitle}>Common Ingredients at a Glance</h2>
+        <p class={styles.sectionDescription}>
+          Quick safety ratings for commonly found litter ingredients. Click to learn more.
+        </p>
+      </div>
+      <div class={styles.ingredientQuickList}>
+        {featuredIngredients.map(ing => (
+          <a href={ing.href} class:list={[styles.ingredientQuickItem, styles[ing.safety]]}>
+            <span class={styles.ingredientName}>{ing.name}</span>
+            <span class={styles.ingredientSafety}>
+              {ing.safety === 'safe' && 'Generally Safe'}
+              {ing.safety === 'caution' && 'Use Caution'}
+              {ing.safety === 'warning' && 'Warning'}
+            </span>
+          </a>
+        ))}
+      </div>
+      <div class={styles.sectionFooter}>
+        <a href="/ingredients" class={styles.viewAllLink}>
+          Browse Full Ingredient Database &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Disclaimer -->
+  <section class={styles.disclaimerSection}>
+    <div class={styles.disclaimerContainer}>
+      <DisclaimerBox type="general">
+        <p>
+          <strong>We are not veterinarians.</strong> The information on HealthyCatLitter.com represents our personal opinions and research as cat owners—not professional advice. Every cat is unique. Always consult with a qualified veterinarian before making changes to your cat's care, especially if your cat has health conditions. Never delay seeking professional care based on anything you read here.
+        </p>
+      </DisclaimerBox>
+    </div>
+  </section>
+</BaseLayout>

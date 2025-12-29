@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ConditionCard from '../../components/ConditionCard.astro';
+import DisclaimerBox from '../../components/DisclaimerBox.astro';
+
+const conditions = [
+  {
+    title: 'Respiratory Issues',
+    slug: 'respiratory-issues',
+    description: 'Some cat owners consider dust and fragrances when their cats have breathing concerns. We share what we\'ve learned—not medical advice.',
+    severity: 'moderate' as const,
+    symptoms: ['Sneezing', 'Wheezing', 'Coughing', 'Watery eyes'],
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>'
+  },
+  {
+    title: 'Urinary Health',
+    slug: 'urinary-health',
+    description: 'Information about litter choices some owners consider for cats with urinary concerns. Always consult your vet for urinary issues—they can be serious.',
+    severity: 'serious' as const,
+    symptoms: ['Straining to urinate', 'Frequent trips to box', 'Blood in urine', 'Crying when urinating'],
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0L12 2.69z"/></svg>'
+  },
+  {
+    title: 'Allergies & Sensitivities',
+    slug: 'allergies',
+    description: 'Some cats seem to react to certain litter ingredients. We share what some owners report—your vet can help identify actual allergies.',
+    severity: 'moderate' as const,
+    symptoms: ['Excessive scratching', 'Hair loss', 'Skin redness', 'Paw chewing'],
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>'
+  },
+  {
+    title: 'Digestive Concerns',
+    slug: 'digestive-concerns',
+    description: 'Some cats eat litter, which concerns owners. We share information we\'ve found—talk to your vet about any digestive issues.',
+    severity: 'moderate' as const,
+    symptoms: ['Vomiting', 'Diarrhea', 'Eating litter', 'Loss of appetite'],
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 110 20 10 10 0 010-20z"/><path d="M12 6v6l4 2"/></svg>'
+  },
+  {
+    title: 'Kitten Safety',
+    slug: 'kitten-safety',
+    description: 'What some owners consider when choosing litter for kittens. Ask your vet for guidance specific to your kitten.',
+    severity: 'moderate' as const,
+    symptoms: ['Curious behavior', 'Developing systems', 'May taste things'],
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>'
+  },
+  {
+    title: 'Senior Cat Considerations',
+    slug: 'senior-cats',
+    description: 'Thoughts on litter for older cats. Senior cats deserve vet care—we just share what some owners think about.',
+    severity: 'mild' as const,
+    symptoms: ['Reduced mobility', 'Changing needs', 'Comfort preferences'],
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>'
+  }
+];
+---
+
+<BaseLayout
+  title="Health Topics"
+  description="Cat litter information related to various health topics. We're cat owners sharing what we've learned - not veterinary advice. Always consult your vet."
+>
+  <section class="page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>/</span>
+        <span>Health Topics</span>
+      </nav>
+      <h1>Health Topics & Cat Litter</h1>
+      <p class="lead">
+        Information about what some cat owners consider when choosing litter. <strong>We are not veterinarians—this is what we've learned as cat owners, not medical advice.</strong> Always consult your vet for health concerns.
+      </p>
+    </div>
+  </section>
+
+  <section class="conditions-grid">
+    <div class="container">
+      <div class="grid">
+        {conditions.map(condition => (
+          <ConditionCard {...condition} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="info-section">
+    <div class="container-content">
+      <h2>Please Consult Your Veterinarian</h2>
+      <p>
+        <strong>We are not veterinarians and cannot tell you when something is or isn't an emergency.</strong> If you have ANY concerns about your cat's health, please contact your veterinarian. Cats are good at hiding illness, so it's always better to call your vet than to wait.
+      </p>
+      <p>
+        The information on this site is about litter choices—it is not medical advice and should never delay you from seeking professional care. Your veterinarian knows your cat's history and can give you proper guidance.
+      </p>
+
+      <DisclaimerBox type="general">
+        <p>
+          <strong>This website is NOT a substitute for veterinary care.</strong> We are cat owners sharing opinions and information we've gathered—nothing more. Please do not use this site to make health decisions. Always consult with a qualified veterinarian for any health concerns about your cat.
+        </p>
+      </DisclaimerBox>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-white) 100%);
+    padding: var(--space-12) var(--space-4);
+    text-align: center;
+  }
+
+  .breadcrumb {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-4);
+  }
+
+  .breadcrumb a {
+    color: var(--color-primary);
+  }
+
+  h1 {
+    font-size: var(--text-4xl);
+    margin: 0 0 var(--space-4);
+  }
+
+  .lead {
+    font-size: var(--text-lg);
+    color: var(--color-text-light);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .conditions-grid {
+    padding: var(--space-12) var(--space-4);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .info-section {
+    padding: var(--space-12) var(--space-4);
+    background: var(--color-bg);
+  }
+
+  .info-section h2 {
+    margin-bottom: var(--space-4);
+  }
+
+  .info-section ul {
+    margin-bottom: var(--space-6);
+  }
+</style>

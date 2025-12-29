@@ -1,0 +1,43 @@
+---
+import styles from './IngredientCard.module.css';
+import SafetyRating from './SafetyRating.astro';
+
+interface Props {
+  name: string;
+  slug: string;
+  category: string;
+  safetyLevel: 'safe' | 'caution' | 'warning' | 'danger';
+  description: string;
+  commonIn?: string[];
+  image?: string;
+}
+
+const { name, slug, category, safetyLevel, description, commonIn = [], image } = Astro.props;
+---
+
+<article class={styles.card}>
+  <a href={`/ingredients/${slug}`} class={styles.link}>
+    {image && (
+      <div class={styles.imageContainer}>
+        <img src={image} alt={name} class={styles.image} loading="lazy" />
+      </div>
+    )}
+    <div class={styles.content}>
+      <span class={styles.category}>{category}</span>
+      <h3 class={styles.name}>{name}</h3>
+      <p class={styles.description}>{description}</p>
+
+      <div class={styles.safety}>
+        <SafetyRating level={safetyLevel} size="sm" />
+      </div>
+
+      {commonIn.length > 0 && (
+        <div class={styles.commonIn}>
+          <span class={styles.commonLabel}>Common in:</span>
+          <span class={styles.commonList}>{commonIn.join(', ')}</span>
+        </div>
+      )}
+    </div>
+    <span class={styles.viewMore}>View Details &rarr;</span>
+  </a>
+</article>

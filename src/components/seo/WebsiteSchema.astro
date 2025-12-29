@@ -1,0 +1,36 @@
+---
+interface Props {
+  name?: string;
+  description?: string;
+  url?: string;
+}
+
+const {
+  name = 'HealthyCatLitter.com',
+  description = 'Evidence-based guidance for choosing safe, healthy cat litter. Research-backed information on ingredients, health conditions, and veterinary recommendations.',
+  url = 'https://healthycatlitter.com'
+} = Astro.props;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name,
+  description,
+  url,
+  publisher: {
+    '@type': 'Organization',
+    name,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${url}/favicon.svg`
+    }
+  },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${url}/search?q={search_term_string}`,
+    'query-input': 'required name=search_term_string'
+  }
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

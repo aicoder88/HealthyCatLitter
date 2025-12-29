@@ -1,0 +1,86 @@
+/* DisclaimerBox - Medical disclaimer styling */
+.disclaimer {
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  margin: var(--space-6) 0;
+}
+
+.medical {
+  background: linear-gradient(135deg, #fff8e7 0%, #fef3cd 100%);
+  border: 1px solid #f0d78c;
+}
+
+.general {
+  background: var(--color-accent);
+  border: 1px solid var(--color-border);
+}
+
+.affiliate {
+  background: #f0f4f8;
+  border: 1px solid var(--color-border);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.medical .icon {
+  color: #b8860b;
+}
+
+.general .icon {
+  color: var(--color-primary);
+}
+
+.affiliate .icon {
+  color: var(--color-text-muted);
+}
+
+.title {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+.medical .title {
+  color: #8b6914;
+}
+
+.general .title {
+  color: var(--color-primary);
+}
+
+.affiliate .title {
+  color: var(--color-text-muted);
+}
+
+.content {
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.content p {
+  margin: 0;
+}
+
+.content p + p {
+  margin-top: var(--space-3);
+}
+
+.content a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
