@@ -141,7 +141,7 @@ const symptomCategories = [
 
     const matchedConditions: { name: string; url: string; matchCount: number }[] = [];
 
-    for (const [key, condition] of Object.entries(conditionMap)) {
+    for (const [, condition] of Object.entries(conditionMap)) {
       const matchCount = selectedSymptoms.filter(s => condition.symptoms.includes(s)).length;
       if (matchCount > 0) {
         matchedConditions.push({ ...condition, matchCount });

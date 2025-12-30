@@ -124,7 +124,7 @@ const recommendations = [
       <h2>Our Recommendations</h2>
 
       <div class="recommendations-list">
-        {recommendations.map((rec, index) => (
+        {recommendations.map((rec) => (
           <article class:list={['recommendation-card', { featured: rec.featured }]}>
             {rec.featured && <span class="featured-badge">Editor's Choice</span>}
 
