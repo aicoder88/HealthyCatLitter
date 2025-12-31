@@ -1,0 +1,436 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SafetyRating from '../../components/SafetyRating.astro';
+import CitationBlock from '../../components/CitationBlock.astro';
+import DisclaimerBox from '../../components/DisclaimerBox.astro';
+
+const citations = [
+  {
+    id: 1,
+    authors: 'Iler RK.',
+    title: 'The Chemistry of Silica: Solubility, Polymerization, Colloid and Surface Properties',
+    journal: 'Wiley-Interscience',
+    year: 1979
+  },
+  {
+    id: 2,
+    authors: 'ASPCA.',
+    title: 'Silica Gel Packets and Cats',
+    journal: 'ASPCA Animal Poison Control Center',
+    year: 2023,
+    url: 'https://www.aspca.org'
+  },
+  {
+    id: 3,
+    authors: 'Litter-Robot.',
+    title: 'Crystal Cat Litter: The Complete Guide',
+    journal: 'Litter-Robot Blog',
+    year: 2023
+  }
+];
+---
+
+<BaseLayout
+  title="Silica Gel - Ingredient Safety Profile"
+  description="Learn about silica gel crystal cat litter: safety profile, how it works, pros and cons, and whether it's right for your cat."
+  ogImage="/og/ingredients-silica-gel.png"
+  article={true}
+>
+  <article class="article">
+    <header class="article-header">
+      <div class="container-content">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span>/</span>
+          <a href="/ingredients">Ingredients</a>
+          <span>/</span>
+          <span>Silica Gel</span>
+        </nav>
+
+        <div class="category-badge">Crystal Litter</div>
+        <h1>Silica Gel</h1>
+
+        <div class="safety-summary">
+          <SafetyRating level="safe" size="lg" />
+        </div>
+
+        <p class="lead">
+          Silica gel (also called crystal litter) is made from silicon dioxide—the same compound found in sand and quartz. It's a popular low-dust, high-absorbency alternative to traditional clay litters.
+        </p>
+      </div>
+    </header>
+
+    <div class="container-content">
+      <section class="section">
+        <h2>What Is Silica Gel Litter?</h2>
+        <p>
+          Silica gel litter consists of small, porous crystals made from synthetic amorphous silica. Unlike the silica gel packets found in shoeboxes (which should never be eaten), cat litter silica gel is specifically formulated for pet use<a href="#cite-1" class="cite-ref">[1]</a>.
+        </p>
+        <p>
+          The crystals work through a process called adsorption:
+        </p>
+        <ul>
+          <li><strong>Moisture absorption</strong> — Crystals draw in urine and trap it within their porous structure</li>
+          <li><strong>Odor control</strong> — Liquid is locked away, reducing ammonia release</li>
+          <li><strong>Color change</strong> — Many brands change color when saturated, indicating replacement time</li>
+          <li><strong>Non-clumping</strong> — Unlike clay, silica doesn't form clumps (solids must be scooped separately)</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Safety Profile</h2>
+        <div class="safety-grid">
+          <div class="safety-item safe">
+            <h4>Dust Level</h4>
+            <p>Silica gel produces significantly less dust than clay litters, making it suitable for cats with respiratory sensitivities.</p>
+          </div>
+          <div class="safety-item safe">
+            <h4>Ingestion</h4>
+            <p>If swallowed in small amounts, silica gel is non-toxic and will typically pass through the digestive system<a href="#cite-2" class="cite-ref">[2]</a>.</p>
+          </div>
+          <div class="safety-item safe">
+            <h4>Skin Contact</h4>
+            <p>Non-irritating to paws. The crystals don't stick to fur like clay particles can.</p>
+          </div>
+          <div class="safety-item caution">
+            <h4>Texture Preference</h4>
+            <p>Some cats dislike the feel of crystals on their paws and may avoid the litter box.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Advantages of Silica Gel Litter</h2>
+        <ul>
+          <li><strong>Low dust</strong> — Excellent for cats with <a href="/conditions/respiratory-issues">asthma or respiratory issues</a></li>
+          <li><strong>Long-lasting</strong> — One fill can last 2-4 weeks for a single cat</li>
+          <li><strong>Lightweight</strong> — Easier to carry and pour than clay</li>
+          <li><strong>Low tracking</strong> — Crystals are less likely to stick to paws</li>
+          <li><strong>Good odor control</strong> — Locks away ammonia effectively</li>
+          <li><strong>Antimicrobial</strong> — The dry environment inhibits bacterial growth<a href="#cite-3" class="cite-ref">[3]</a></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Potential Drawbacks</h2>
+        <ul>
+          <li><strong>Cost</strong> — Generally more expensive than clay litters</li>
+          <li><strong>Texture issues</strong> — Some cats refuse to use crystal litter</li>
+          <li><strong>Not flushable</strong> — Cannot be disposed of in toilets</li>
+          <li><strong>Non-biodegradable</strong> — Does not break down in landfills</li>
+          <li><strong>Requires stirring</strong> — Must be stirred daily to distribute moisture evenly</li>
+          <li><strong>Solid waste visible</strong> — No clumping means feces remain visible until scooped</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Cats That Benefit Most</h2>
+        <p>Silica gel litter is particularly well-suited for:</p>
+        <ul>
+          <li><strong>Cats with <a href="/conditions/respiratory-issues">asthma or allergies</a></strong> — Minimal dust production</li>
+          <li><strong>Long-haired cats</strong> — Less tracking and clinging to fur</li>
+          <li><strong><a href="/conditions/senior-cats">Senior cats</a></strong> — Lighter weight for easier digging</li>
+          <li><strong>Single-cat households</strong> — Extended use between changes</li>
+          <li><strong>Owners with allergies</strong> — Less airborne particles</li>
+        </ul>
+      </section>
+
+      <section class="section highlight-box">
+        <h2>Maximizing Silica Gel Litter Performance</h2>
+        <p>
+          To get the most from silica gel litter:
+        </p>
+        <ul>
+          <li><strong>Scoop solids daily</strong> — Crystals only absorb liquids</li>
+          <li><strong>Stir regularly</strong> — Prevents urine from pooling in one spot</li>
+          <li><strong>Use proper depth</strong> — 1.5-2 inches is usually sufficient</li>
+          <li><strong>Change when saturated</strong> — Look for color changes or odor breakthrough</li>
+          <li><strong>Consider adding odor boosters</strong> — <a href="https://purrify.ca?utm_source=healthycatlitter&utm_medium=ingredient-silica">Purrify activated carbon</a> can extend freshness</li>
+        </ul>
+        <p>
+          <a href="https://purrify.ca/learn/how-it-works?utm_source=healthycatlitter&utm_medium=ingredient-silica">Learn how Purrify works with any litter type &rarr;</a>
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Silica Gel vs. Other Litter Types</h2>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Silica Gel</th>
+              <th>Clay (Bentonite)</th>
+              <th>Natural (Pine/Corn)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Dust Level</strong></td>
+              <td>Very Low</td>
+              <td>Medium-High</td>
+              <td>Low-Medium</td>
+            </tr>
+            <tr>
+              <td><strong>Odor Control</strong></td>
+              <td>Good</td>
+              <td>Good</td>
+              <td>Moderate</td>
+            </tr>
+            <tr>
+              <td><strong>Clumping</strong></td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Varies</td>
+            </tr>
+            <tr>
+              <td><strong>Change Frequency</strong></td>
+              <td>2-4 weeks</td>
+              <td>1-2 weeks</td>
+              <td>1-2 weeks</td>
+            </tr>
+            <tr>
+              <td><strong>Eco-Friendly</strong></td>
+              <td>No</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td><strong>Cat Acceptance</strong></td>
+              <td>Variable</td>
+              <td>High</td>
+              <td>Variable</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Is Silica Gel the Same as Silica in Desiccant Packets?</h2>
+        <p>
+          While both are forms of silica, they're not identical. The silica gel in cat litter is:
+        </p>
+        <ul>
+          <li>Specifically sized and shaped for litter box use</li>
+          <li>Free from indicator chemicals (like cobalt chloride) sometimes found in desiccants</li>
+          <li>Tested for pet safety</li>
+        </ul>
+        <p>
+          <strong>Important:</strong> Never use industrial desiccant packets as cat litter. Only use products specifically formulated for cats.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Transitioning to Silica Gel</h2>
+        <p>
+          If switching from clay to silica gel, transition gradually:
+        </p>
+        <ol>
+          <li><strong>Week 1:</strong> Mix 25% silica with 75% current litter</li>
+          <li><strong>Week 2:</strong> Mix 50/50</li>
+          <li><strong>Week 3:</strong> Mix 75% silica with 25% old litter</li>
+          <li><strong>Week 4:</strong> Full silica gel</li>
+        </ol>
+        <p>
+          Watch for signs of rejection (avoiding the box, going elsewhere) and slow down if needed. Some cats adapt quickly; others may never accept the texture change.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Common Questions</h2>
+
+        <h3>Is silica gel litter safe if my cat eats it?</h3>
+        <p>
+          Small amounts of ingested silica gel are generally harmless and will pass through. However, eating significant quantities could cause digestive upset or, rarely, blockage. If your cat regularly eats litter, consult your veterinarian—this behavior (pica) may indicate a health issue.
+        </p>
+
+        <h3>Why does my cat refuse to use silica gel litter?</h3>
+        <p>
+          Cats are texture-sensitive, and the hard, crunchy feel of crystals differs significantly from sand-like clay. Some cats simply won't accept it. If your cat rejects silica gel after a gradual transition, it's best to return to their preferred litter type.
+        </p>
+
+        <h3>Can I use silica gel with kittens?</h3>
+        <p>
+          Yes, silica gel is generally safe for <a href="/conditions/kitten-safety">kittens</a>. Its non-toxic nature makes it a good option if you're concerned about clumping litter ingestion. However, monitor to ensure kittens don't eat the crystals.
+        </p>
+
+        <DisclaimerBox type="general">
+          <p>
+            Every cat has individual preferences. What works perfectly for one cat may be completely rejected by another. Always monitor your cat's behavior when introducing any new litter type and consult your veterinarian with concerns.
+          </p>
+        </DisclaimerBox>
+      </section>
+
+      <CitationBlock citations={citations} />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .article-header {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-white) 100%);
+    padding: var(--space-12) var(--space-4);
+  }
+
+  .breadcrumb {
+    display: flex;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-4);
+  }
+
+  .breadcrumb a {
+    color: var(--color-primary);
+  }
+
+  .category-badge {
+    display: inline-block;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-primary);
+    background: var(--color-white);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-primary);
+    margin-bottom: var(--space-4);
+  }
+
+  h1 {
+    font-size: var(--text-4xl);
+    margin: 0 0 var(--space-6);
+  }
+
+  .safety-summary {
+    margin-bottom: var(--space-6);
+  }
+
+  .lead {
+    font-size: var(--text-xl);
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .section {
+    margin: var(--space-10) 0;
+  }
+
+  .section h2 {
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-2);
+    border-bottom: 2px solid var(--color-accent);
+  }
+
+  .section h3 {
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-2);
+    color: var(--color-primary);
+    font-size: var(--text-lg);
+  }
+
+  .safety-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+  }
+
+  .safety-item {
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-light);
+  }
+
+  .safety-item.safe {
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+  }
+
+  .safety-item.safe h4 {
+    color: var(--color-safe);
+  }
+
+  .safety-item.caution {
+    background: #fffbeb;
+    border-color: #fde68a;
+  }
+
+  .safety-item.caution h4 {
+    color: var(--color-caution);
+  }
+
+  .safety-item h4 {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    margin: 0 0 var(--space-2);
+  }
+
+  .safety-item p {
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .highlight-box {
+    background: var(--color-accent);
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--color-primary);
+  }
+
+  .highlight-box h2 {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--space-4);
+    font-size: var(--text-sm);
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: var(--space-3) var(--space-4);
+    text-align: left;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+
+  .comparison-table th {
+    background: var(--color-bg);
+    font-weight: 600;
+  }
+
+  ol {
+    counter-reset: step-counter;
+    list-style: none;
+    padding-left: 0;
+  }
+
+  ol li {
+    counter-increment: step-counter;
+    padding-left: var(--space-8);
+    position: relative;
+    margin-bottom: var(--space-2);
+  }
+
+  ol li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>

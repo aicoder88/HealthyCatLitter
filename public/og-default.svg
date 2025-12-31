@@ -1,0 +1,80 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#e8f4f8"/>
+      <stop offset="100%" stop-color="#f8fafb"/>
+    </linearGradient>
+
+    <!-- Subtle pattern overlay -->
+    <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#1a5f7a" opacity="0.05"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+
+  <!-- Decorative elements - bottom accent bar -->
+  <rect y="580" width="1200" height="50" fill="#1a5f7a"/>
+
+  <!-- Decorative cat silhouette on right side -->
+  <g transform="translate(900, 200)">
+    <!-- Cat sitting pose - simple, elegant silhouette -->
+    <path d="M 100 200 Q 80 180 70 150 Q 65 120 70 100 L 60 70 L 65 65 Q 70 90 75 100 Q 80 60 85 50 L 90 55 Q 90 80 88 100 Q 95 90 105 100 Q 110 120 108 150 Q 105 180 100 200 Z" fill="#1a5f7a" opacity="0.15"/>
+    <!-- Tail curve -->
+    <path d="M 70 150 Q 50 140 40 160 Q 35 175 45 185" stroke="#1a5f7a" stroke-width="8" fill="none" opacity="0.15" stroke-linecap="round"/>
+  </g>
+
+  <!-- Medical cross icon -->
+  <g transform="translate(120, 180)">
+    <circle cx="40" cy="40" r="45" fill="#57a773" opacity="0.2"/>
+    <rect x="32" y="15" width="16" height="50" rx="2" fill="#57a773"/>
+    <rect x="15" y="32" width="50" height="16" rx="2" fill="#57a773"/>
+  </g>
+
+  <!-- Main content -->
+  <g transform="translate(120, 280)">
+    <!-- Site name -->
+    <text x="0" y="0" font-family="Georgia, serif" font-size="72" font-weight="700" fill="#1a5f7a">
+      HealthyCatLitter.com
+    </text>
+
+    <!-- Tagline -->
+    <text x="0" y="65" font-family="system-ui, -apple-system, sans-serif" font-size="32" fill="#4a5568" font-weight="400">
+      Your Guide to Safer Cat Litter Choices
+    </text>
+
+    <!-- Feature bullets -->
+    <g transform="translate(0, 130)">
+      <!-- Bullet 1 -->
+      <circle cx="0" cy="0" r="4" fill="#57a773"/>
+      <text x="20" y="6" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#1a2b3c">
+        Health-focused ingredient analysis
+      </text>
+
+      <!-- Bullet 2 -->
+      <circle cx="0" cy="45" r="4" fill="#57a773"/>
+      <text x="20" y="51" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#1a2b3c">
+        Evidence-based safety information
+      </text>
+
+      <!-- Bullet 3 -->
+      <circle cx="0" cy="90" r="4" fill="#57a773"/>
+      <text x="20" y="96" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#1a2b3c">
+        Condition-specific recommendations
+      </text>
+    </g>
+  </g>
+
+  <!-- Footer with domain -->
+  <text x="120" y="610" font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="#f8fafb" opacity="0.9">
+    healthycatlitter.com
+  </text>
+
+  <!-- Purrify mention -->
+  <text x="1050" y="610" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#f8fafb" opacity="0.7" text-anchor="end">
+    Powered by Purrify
+  </text>
+</svg>
