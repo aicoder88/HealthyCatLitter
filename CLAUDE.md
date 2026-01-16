@@ -11,15 +11,17 @@ HealthyCatLitter.com is a satellite site designed to drive traffic to **Purrify*
 ## Commands
 
 ```bash
-npm run dev      # Start dev server at localhost:4321
-npm run build    # Production build to ./dist/
-npm run preview  # Preview production build locally
+pnpm install     # Install dependencies
+pnpm dev         # Start dev server at localhost:4321
+pnpm build       # Production build to ./dist/
+pnpm preview     # Preview production build locally
 ```
 
 ## Architecture
 
 ### Framework
 - **Astro 5** with static site generation
+- **Deployment:** @astrojs/vercel adapter for Vercel
 - **CSS Modules** for component styling (no Tailwind)
 - **TypeScript** with strict mode
 
@@ -73,3 +75,32 @@ Key Purrify pages to link:
 - Single `<h1>` per page
 - Add appropriate Schema component (Article, FAQ, or Product)
 - Include canonical URL (automatic via BaseLayout)
+
+## Deployment
+
+### Build Output
+
+The build produces a static output:
+- **Static pages:** Prerendered HTML in `dist/client/`
+- **Vercel config:** `.vercel/output/` directory for deployment
+
+### Vercel Deployment
+
+Configured with `@astrojs/vercel` adapter for automatic deployment:
+
+1. **Push to GitHub:** Changes trigger automatic deployment
+2. **Build command:** `pnpm build`
+3. **Output:** Static site
+4. **Framework preset:** Astro (auto-detected)
+
+### Deployment Architecture
+
+- **Static pages** are served from Vercel's Edge Network (instant loading)
+- **Headers** can be configured in `vercel.json` for security (if needed)
+- **Sitemap** automatically generated with weekly changefreq
+- **Self-hosted fonts** (WOFF2) for privacy and performance
+
+### Configuration Files
+
+- `astro.config.mjs` - Astro configuration with Vercel adapter
+- `.gitignore` - Excludes `.vercel/` build artifacts
